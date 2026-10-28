@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /respaldo/
+
+Sitemap: https://gmeventoss.com/sitemap.xml

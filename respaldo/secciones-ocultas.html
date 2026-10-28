@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow"><title>Respaldo de secciones ocultas</title></head><body>
+<!-- Secciones retiradas del sitio (brandeo, abanico de fotos y cómo reservar). Para reactivarlas: copiar el bloque HTML de vuelta a index.html y su script. -->
+<!-- OCULTA: para reactivar, quita el atributo hidden -->
+<section class="light brand" id="brandeo" hidden>
+  <div class="wrap brand-grid">
+    <div>
+      <span class="tag v">Para empresas</span>
+      <h2 class="display">Tu marca,<br><span>en todas</span> las fotos</h2>
+      <p class="intro">En eventos corporativos personalizamos la cabina, el fondo y cada impresión con tu identidad. Pruébalo: escribe el nombre de tu empresa, elige el color o sube tu logo.</p>
+      <div class="ctrl">
+        <div class="field"><label for="bname-in">Nombre de tu empresa o evento</label><input type="text" id="bname-in" maxlength="22" value="Tu marca aquí"></div>
+        <div class="field"><label>Color de marca</label>
+          <div class="swatches" id="sw">
+            <button aria-pressed="true" aria-label="Violeta" data-c="#7D39EB" style="background:#7D39EB"></button>
+            <button aria-pressed="false" aria-label="Lima" data-c="#B7EC1F" style="background:#B7EC1F"></button>
+            <button aria-pressed="false" aria-label="Rojo" data-c="#E3262F" style="background:#E3262F"></button>
+            <button aria-pressed="false" aria-label="Azul" data-c="#1749D8" style="background:#1749D8"></button>
+            <button aria-pressed="false" aria-label="Negro" data-c="#2A2A2A" style="background:#2A2A2A"></button>
+            <button aria-pressed="false" aria-label="Dorado" data-c="#C9A23B" style="background:#C9A23B"></button>
+          </div>
+        </div>
+        <div class="field"><label for="logo-in">Tu logo (opcional)</label>
+          <label class="upload" for="logo-in"><span class="ic">↑</span><span id="logo-txt">Sube un PNG o SVG y míralo en la cabina</span><input type="file" id="logo-in" accept="image/*"></label>
+        </div>
+        <div class="field"><label>Extras de branding</label>
+          <div class="extras" id="extras">
+            <label><span><input type="checkbox" data-p="700" data-n="Backdrop curvo">Backdrop curvo</span><em>Q700</em></label>
+            <label><span><input type="checkbox" data-p="650" data-n="Backdrop pared">Backdrop pared</span><em>Q650</em></label>
+            <label><span><input type="checkbox" data-p="800" data-n="Banderola">Banderola</span><em>Q800</em></label>
+            <label><span><input type="checkbox" data-p="375" data-n="Display">Display</span><em>Q375</em></label>
+            <label><span><input type="checkbox" data-p="375" data-n="Roll Up">Roll Up</span><em>Q375</em></label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mock" id="mock">
+      <span class="tag badge">Vista previa en vivo</span>
+      <div class="booth">
+        <img src="img/clasica.webp" alt="Cabina Clásica con paneles personalizados" width="686" height="652">
+        <div class="panel panel-l"></div><div class="panel panel-r"></div>
+        <div class="ptext vert panel-l" id="pl"><span>Tu marca aquí</span></div>
+        <div class="ptext panel-r" id="pr"><span>Tu marca aquí</span></div>
+      </div>
+      <div class="sum"><div><small>Clásica + extras</small><strong id="bsum">Q3,900</strong></div><a class="btn btn-ink js-wa" id="brand-cta" href="#cotizar">Cotizar con mi marca <span class="ar" aria-hidden="true">↗</span></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<!-- OCULTA: para reactivar, quita el atributo hidden -->
+<section class="gallery" id="eventos" hidden>
+  <div class="wrap">
+    <p class="eyebrow" style="margin:0 0 14px;color:var(--lime)">Si hay celebración, ahí estamos</p>
+    <h2 class="display">Cada fiesta,<br>su propia tira</h2>
+    <p class="sub">Desliza para abrir la baraja. Aquí irán las fotos reales de tus eventos, separadas por tipo de celebración.</p>
+  </div>
+  <div class="fan" id="fan">
+    <div class="print" style="--x:-520px;--r:-16deg"><span class="tape"></span><div class="ph" style="background:linear-gradient(160deg,#2b2b2b,#7D39EB)"></div><div class="cap">Despedidas<i>01</i></div></div>
+    <div class="print" style="--x:-312px;--r:-10deg"><span class="tape"></span><div class="ph" style="background:linear-gradient(160deg,#C6FF33,#2b2b2b)"></div><div class="cap">Graduaciones<i>02</i></div></div>
+    <div class="print" style="--x:-104px;--r:-3deg"><span class="tape"></span><div class="ph" style="background:linear-gradient(160deg,#A77BFF,#151515)"></div><div class="cap">Bodas<i>03</i></div></div>
+    <div class="print" style="--x:104px;--r:3deg"><span class="tape"></span><div class="ph" style="background:linear-gradient(160deg,#151515,#C6FF33)"></div><div class="cap">XV años<i>04</i></div></div>
+    <div class="print" style="--x:312px;--r:10deg"><span class="tape"></span><div class="ph" style="background:linear-gradient(160deg,#7D39EB,#C6FF33)"></div><div class="cap">Corporativos<i>05</i></div></div>
+    <div class="print" style="--x:520px;--r:16deg"><span class="tape"></span><div class="ph" style="background:linear-gradient(160deg,#2b2b2b,#A77BFF)"></div><div class="cap">Cumpleaños<i>06</i></div></div>
+  </div>
+</section>
+
+<!-- PASOS -->
+<!-- OCULTA: para reactivar, quita el atributo hidden -->
+<section class="light steps" id="reservar" hidden>
+  <div class="wrap">
+    <p class="eyebrow" style="margin:0 0 14px;color:var(--violet)">Cómo reservar</p>
+    <h2 class="display">Tres pasos y tu fecha queda separada</h2>
+    <div class="row">
+      <article class="step"><span class="num">1</span><div><h3>Cotizas</h3><p>Eliges la cabina y los extras aquí abajo. Te llega todo armado a WhatsApp.</p></div></article>
+      <article class="step"><span class="num">2</span><div><h3>Das el 50% de anticipo</h3><p>Con el anticipo la fecha es tuya. El resto se liquida antes del evento.</p></div></article>
+      <article class="step"><span class="num">3</span><div><h3>Disfrutas tu fiesta</h3><p>Llegamos con anticipación, montamos todo y nos encargamos de cada foto.</p></div></article>
+    </div>
+    <div class="logi">
+      <span>Espacio mínimo <b>3 × 3 m</b></span>
+      <span>Toma corriente <b>110 V</b></span>
+      <span>Servicio de <b>3 horas</b></span>
+      <span>Equipo de <b>4–5 personas</b> vestidas de negro</span>
+    </div>
+  </div>
+</section>
+<script>
+/* Script original del configurador de brandeo */
+/* Configurador de brandeo */
+const nameIn = document.getElementById("bname-in"), pl = document.getElementById("pl"), pr = document.getElementById("pr"), mock = document.getElementById("mock");
+let logoURL = null;
+function paintBrand(){
+  const t = nameIn.value.trim() || "Tu marca";
+  if (logoURL) {
+    pl.innerHTML = '<img src="' + logoURL + '" alt="Logo">';
+    pr.innerHTML = '<img src="' + logoURL + '" alt="Logo">';
+  } else {
+    pl.innerHTML = ""; pr.innerHTML = "";
+    const a = document.createElement("span"); a.textContent = t; pl.append(a);
+    const b = document.createElement("span"); b.textContent = t; pr.append(b);
+  }
+  let total = 3900; const sel = [];
+  document.querySelectorAll("#extras input:checked").forEach(c => { total += +c.dataset.p; sel.push(c.dataset.n); });
+  document.getElementById("bsum").textContent = fmt(total);
+  const cta = document.getElementById("brand-cta");
+  cta.href = waLink("Hola GM Eventos, quiero una Cabina Clásica brandeada para " + t + (sel.length ? ", con: " + sel.join(", ") : "") + ". Total estimado " + fmt(total) + ".");
+  cta.target = "_blank"; cta.rel = "noopener";
+}
+nameIn.addEventListener("input", paintBrand);
+document.querySelectorAll("#sw button").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll("#sw button").forEach(x => x.setAttribute("aria-pressed", x === b));
+  mock.style.setProperty("--bcol", b.dataset.c);
+}));
+document.getElementById("logo-in").addEventListener("change", e => {
+  const f = e.target.files[0]; if (!f) return;
+  if (logoURL) URL.revokeObjectURL(logoURL);
+  logoURL = URL.createObjectURL(f);
+  document.getElementById("logo-txt").textContent = f.name + " · listo";
+  paintBrand();
+});
+document.querySelectorAll("#extras input").forEach(c => c.addEventListener("change", paintBrand));
+paintBrand();
+
+</script>
+</body></html>
