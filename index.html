@@ -1,0 +1,1007 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0A0A0A">
+<meta property="og:title" content="GM Eventos · Photobooths premium en Guatemala">
+<meta property="og:description" content="Cabina 360°, Clásica, Ring Booth, Balloon Box y Fotógrafo VIP. Tú solo reservas la fecha; nosotros nos encargamos de lo demás.">
+<meta property="og:image" content="img/galeria/foto-02.webp">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A0A0A'/%3E%3Ctext x='8' y='43' font-family='Arial Black,Arial' font-weight='900' font-size='28' fill='white'%3EGM%3C/text%3E%3Ccircle cx='54' cy='40' r='4' fill='%23C6FF33'/%3E%3C/svg%3E">
+<title>GM Eventos</title>
+<meta name="description" content="Photobooths premium para bodas, XV años, graduaciones y eventos corporativos en toda Guatemala. Tú reservas la fecha, nosotros nos encargamos de todo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Unbounded:wght@500;700;900&display=swap">
+<style>
+/* Layout: secciones alternadas negro / blanco / lima, como pliegos de una tira de fotos; la cabina siempre al centro del escenario */
+:root{
+  --ink:#0A0A0A; --ink-2:#161616; --paper:#FFFFFF; --paper-2:#F2F2EE;
+  --lime:#C6FF33; --violet:#7D39EB; --violet-2:#A77BFF;
+  --mute:#8C8C86; --line:rgba(255,255,255,.14); --line-d:rgba(10,10,10,.12);
+  --f-display:"Anton","Impact","Arial Narrow",sans-serif;
+  --f-accent:"Unbounded","Arial Black",system-ui,sans-serif;
+  --f-body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r-xl:32px; --r-lg:22px; --r-pill:999px;
+  --gut:max(16px, env(safe-area-inset-left, 0px));
+  --gut-r:max(16px, env(safe-area-inset-right, 0px));
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);font:400 17px/1.55 var(--f-body);overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--ink)}
+a{color:inherit}
+img{max-width:100%;display:block}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--lime);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1240px;margin-inline:auto;padding-left:var(--gut);padding-right:var(--gut-r)}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:70;opacity:.07;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* tipografía */
+.eyebrow{font:700 12px/1 var(--f-accent);letter-spacing:.14em;text-transform:uppercase}
+.tag{display:inline-flex;align-items:center;gap:8px;background:var(--lime);color:var(--ink);padding:8px 14px;font:700 12px/1 var(--f-accent);letter-spacing:.06em;text-transform:uppercase;transform:rotate(-2deg)}
+.tag.v{background:var(--violet);color:var(--paper)}
+h1,h2,h3{margin:0;text-wrap:balance;font-weight:400}
+.display{font-family:var(--f-display);text-transform:uppercase;line-height:.88;letter-spacing:-.005em}
+
+/* botones */
+.btn{display:inline-flex;align-items:center;gap:12px;border:0;border-radius:var(--r-pill);padding:8px 8px 8px 22px;font:700 15px/1 var(--f-body);text-decoration:none;transition:transform .2s ease, box-shadow .2s ease}
+.btn .ar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--lime);transition:transform .25s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn:hover .ar{transform:rotate(-45deg)}
+.btn-lime{background:var(--lime);color:var(--ink);box-shadow:0 10px 30px -10px rgba(198,255,51,.6)}
+.btn-white{background:var(--paper);color:var(--ink)}
+.btn-ghost{background:transparent;color:var(--paper);border:1.5px solid var(--line);padding:14px 22px}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-ink .ar{background:var(--lime);color:var(--ink)}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;padding-block:12px;background:rgba(10,10,10,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;align-items:baseline;gap:6px;text-decoration:none}
+.logo b{font:900 24px/1 var(--f-accent);letter-spacing:-.04em}
+.logo b i{font-style:normal;color:var(--lime)}
+.logo span{font:500 11px/1 var(--f-accent);letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.links{display:flex;gap:4px;background:rgba(22,22,22,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:var(--r-pill);padding:5px}
+.links a{padding:9px 16px;border-radius:var(--r-pill);font-size:14px;text-decoration:none;color:#d8d8d2;transition:background .2s}
+.links a:hover{background:rgba(255,255,255,.08);color:var(--paper)}
+.links a.on{background:var(--lime);color:var(--ink);font-weight:700}
+.nav .btn{padding:6px 6px 6px 18px;font-size:14px}
+.nav .btn .ar{width:32px;height:32px}
+@media (max-width:860px){.links{display:none}}
+
+/* HERO */
+.hero{position:relative;padding-block:24px 56px;overflow:hidden}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:center}
+.hero h1{font-size:clamp(54px,8.6vw,132px)}
+.hero h1 > span{display:block;white-space:nowrap}
+.hero h1 .l2{display:block;color:transparent;-webkit-text-stroke:2px var(--paper)}
+.hero h1 .l3{display:flex;align-items:center;gap:.12em}
+.hero h1 .l3 em{font-style:normal;color:var(--lime)}
+.shutter{width:.78em;height:.78em;border-radius:50%;border:none;background:var(--lime);display:inline-grid;place-items:center;flex:none;position:relative;box-shadow:0 0 0 .06em var(--ink) inset;transition:transform .15s}
+.shutter::after{content:"";width:46%;height:46%;border-radius:50%;background:var(--ink);transition:transform .15s}
+.shutter:hover{transform:scale(1.05)}
+.shutter:active::after{transform:scale(.6)}
+.hero-copy p{max-width:44ch;color:#cfcfc8;font-size:18px;margin:22px 0 28px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.hero-top{display:flex;align-items:center;gap:14px;margin-bottom:22px;flex-wrap:wrap}
+.hero-top small{color:var(--mute);font-size:13px}
+
+.stage{position:relative;aspect-ratio:1/1.02;max-width:100%}
+.glow{position:absolute;inset:8% 4% 10%;border-radius:50%;background:radial-gradient(closest-side,rgba(198,255,51,.55),rgba(125,57,235,.35) 55%,transparent 75%);filter:blur(30px);animation:breathe 6s ease-in-out infinite}
+@keyframes breathe{50%{transform:scale(1.08);opacity:.85}}
+.orbit{position:absolute;left:50%;bottom:12%;width:88%;aspect-ratio:3.4/1;translate:-50% 0;border:1.5px dashed rgba(198,255,51,.5);border-radius:50%;animation:spin 14s linear infinite}
+.orbit::before,.orbit::after{content:"";position:absolute;width:12px;height:12px;border-radius:50%;background:var(--lime);top:50%;left:-6px;translate:0 -50%;box-shadow:0 0 18px var(--lime)}
+.orbit::after{left:auto;right:-6px;background:var(--violet-2);box-shadow:0 0 18px var(--violet)}
+@keyframes spin{to{rotate:360deg}}
+.stage .hero-booth{position:absolute;left:50%;bottom:8%;height:76%;width:auto;max-width:70%;object-fit:contain;object-position:bottom;translate:-50% 0;filter:drop-shadow(0 30px 40px rgba(0,0,0,.6));animation:float 5s ease-in-out infinite;
+  opacity:0;transform:translateY(40px) scale(.92) rotate(-4deg);transition:opacity .7s ease, transform .9s cubic-bezier(.2,.8,.2,1)}
+.stage .hero-booth.on{opacity:1;transform:none}
+.stage .hero-booth.out{opacity:0;transform:translateY(-30px) scale(.94) rotate(4deg)}
+.hero-name{position:absolute;left:52%;bottom:1%;translate:-50% 0;font:700 12px/1 var(--f-accent);letter-spacing:.12em;text-transform:uppercase;color:var(--lime);white-space:nowrap;transition:opacity .3s}
+.hero-name.fade{opacity:0}
+@keyframes float{50%{transform:translateY(-10px)}}
+.fcard{position:absolute;z-index:2;background:var(--paper);color:var(--ink);border-radius:14px;padding:9px 11px;display:flex;gap:9px;align-items:center;box-shadow:0 20px 40px -18px rgba(0,0,0,.7);font-size:11.5px;line-height:1.3;max-width:178px}
+.fcard b{display:block;font:700 10px/1.2 var(--f-accent);text-transform:uppercase;letter-spacing:.03em;margin-bottom:2px}
+.fcard .ic{width:30px;height:30px;border-radius:9px;flex:none;display:grid;place-items:center;background:var(--ink);color:var(--lime);font-size:12px}
+.fcard.c1{top:2%;right:-9%;rotate:3deg;animation:float 6s ease-in-out infinite .4s}
+.fcard.c2{top:30%;left:-12%;rotate:-4deg;background:var(--violet);color:var(--paper);animation:float 7s ease-in-out infinite 1s}
+.fcard.c2 .ic{background:var(--paper);color:var(--violet)}
+.fcard.c3{bottom:12%;right:-10%;rotate:-2deg;background:var(--lime);animation:float 6.5s ease-in-out infinite .2s}
+.stage .stk{position:absolute;top:2%;left:6%;rotate:-10deg}
+
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:48px;border-top:1px solid var(--line)}
+.facts div{padding:22px 18px 0 0}
+.facts div+div{padding-left:18px;border-left:1px solid var(--line)}
+.facts strong{display:block;font:900 clamp(26px,3vw,38px)/1 var(--f-accent);letter-spacing:-.03em}
+.facts span{font-size:13px;color:var(--mute);text-transform:uppercase;letter-spacing:.08em}
+
+.flash{position:fixed;inset:0;background:#fff;z-index:90;pointer-events:none;opacity:0}
+.flash.go{animation:flash .5s ease-out}
+@keyframes flash{0%{opacity:.95}100%{opacity:0}}
+
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:1fr}
+  .stage{max-width:520px;margin-inline:auto;width:100%}
+  .facts{grid-template-columns:1fr 1fr;row-gap:22px}
+  .facts div:nth-child(3){padding-left:0;border-left:0}
+}
+@media (max-width:900px){.fcard.c1{right:0}.fcard.c2{left:0}.fcard.c3{right:0}}
+@media (max-width:480px){.fcard{max-width:150px;font-size:10.5px;padding:8px 9px}.fcard .ic{width:26px;height:26px}.fcard.c1{top:9%}.fcard.c2{left:0;top:40%}.fcard.c3{bottom:10%}.fab{width:76px;height:76px}.fab .core{width:48px;height:48px}}
+
+/* MARQUEE */
+.marquee{background:var(--lime);color:var(--ink);overflow:hidden;rotate:-1.6deg;margin-block:-10px;position:relative;z-index:5;border-block:2px solid var(--ink)}
+.marquee .track{display:flex;width:max-content;animation:mq 26s linear infinite}
+.marquee span{font:400 clamp(28px,4vw,46px)/1 var(--f-display);text-transform:uppercase;padding:16px 0;white-space:nowrap}
+.marquee span i{font-style:normal;display:inline-block;margin-inline:22px;color:var(--violet)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* MANIFIESTO (blanco) */
+.light{background:var(--paper);color:var(--ink)}
+.manifesto{padding-block:96px 88px;position:relative;overflow:hidden}
+.ghost{position:absolute;inset:auto 0 -2vw;font:400 22vw/0.8 var(--f-display);color:var(--paper-2);text-transform:uppercase;white-space:nowrap;pointer-events:none;z-index:0}
+.manifesto .wrap{position:relative;z-index:1}
+.rv-wrap{position:relative;padding-block:22px}
+.reveal{font:400 clamp(34px,4.7vw,68px)/1.02 var(--f-display);text-transform:uppercase;text-align:center;margin-inline:auto;max-width:none}
+.rv-wrap .chip{position:absolute;translate:none}
+.rv-wrap .c-a{left:4%;top:-6px}
+.rv-wrap .c-b{right:6%;top:-10px}
+.rv-wrap .c-c{left:50%;bottom:-18px;translate:-50% 0}
+@media (max-width:640px){.rv-wrap .c-a{left:0}.rv-wrap .c-b{right:0}.rv-wrap .c-c{bottom:-24px}}
+.reveal .w{color:#c9c9c2;transition:color .35s ease}
+.reveal .w.lit{color:var(--ink)}
+.reveal .w.hl.lit{background:linear-gradient(transparent 58%,var(--lime) 58%,var(--lime) 92%,transparent 92%)}
+.chip{display:inline-block;vertical-align:middle;font:700 13px/1 var(--f-accent);text-transform:none;padding:9px 13px;border-radius:var(--r-pill);background:var(--ink);color:var(--lime);margin-inline:.15em;rotate:-6deg;translate:0 -.2em}
+.chip.v{background:var(--violet);color:var(--paper);rotate:5deg}
+.chip.l{background:var(--lime);color:var(--ink);rotate:-3deg}
+.incl{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}
+/* Galería giratoria (coverflow) */
+.cf{position:relative;margin-top:72px;height:clamp(380px,40vw,500px)}
+.cf-glow{position:absolute;left:50%;top:46%;width:min(760px,100%);height:80%;translate:-50% -50%;border-radius:50%;background:radial-gradient(closest-side,rgba(125,57,235,.28),rgba(198,255,51,.18) 55%,transparent 75%);filter:blur(20px)}
+.cf-track{position:absolute;inset:0}
+.cf-card{position:absolute;left:50%;top:0;width:clamp(200px,23vw,290px);margin:0;border-radius:24px;padding:8px;background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(242,242,238,.92));border:1px solid rgba(10,10,10,.08);box-shadow:0 30px 60px -28px rgba(10,10,10,.55);
+  transform:translateX(calc(-50% + var(--x,0px))) scale(var(--s,1));transform-origin:50% 60%;opacity:var(--o,1);z-index:var(--z,1);filter:saturate(var(--sat,1)) brightness(var(--br,1));
+  will-change:transform,opacity}
+.cf-ph{aspect-ratio:4/5;border-radius:18px;overflow:hidden;position:relative;background:var(--g);display:grid;place-items:center}
+.cf-ph img,.cf-ph video{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.18) contrast(1.06)}
+.cf-card figcaption b{font-size:14px;line-height:1.25}
+.cf-card figcaption i{display:block;font-size:12.5px;line-height:1.35;margin-top:4px;min-height:2.7em}
+.cf-ph span{font:700 11px/1 var(--f-accent);letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.85);border:1px dashed rgba(255,255,255,.6);padding:8px 10px;border-radius:999px}
+.cf-card figcaption{text-align:center;padding:12px 6px 8px}
+.cf-card figcaption b{display:block;font:700 15px/1.2 var(--f-accent);letter-spacing:-.01em}
+.cf-card figcaption i{font-style:normal;font-size:13px;color:#7a7a74}
+.cf-dots{position:absolute;left:50%;bottom:0;translate:-50% 0;display:flex;gap:6px}
+.cf-dots i{width:6px;height:6px;border-radius:999px;background:#cfcfc8;transition:width .4s,background .4s}
+.cf-dots i.on{width:22px;background:var(--ink)}
+@media (max-width:640px){.cf{height:430px}.cf-card{width:62vw}}
+.incl li{list-style:none;border:1.5px solid var(--line-d);border-radius:var(--r-lg);padding:22px;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:start;transition:background .25s,border-color .25s;background:var(--paper)}
+.incl li:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.incl li:hover .n{background:var(--lime);color:var(--ink)}
+.incl .n{grid-row:span 2;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--paper-2);transition:background .25s}
+.incl b{font:700 15px/1.25 var(--f-accent)}
+.incl p{margin:0;font-size:15px;color:inherit;opacity:.75}
+.incl{padding:0}
+@media (max-width:980px){.incl{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.incl{grid-template-columns:1fr}}
+
+/* CABINAS */
+.booths{position:relative;padding-block:110px;transition:background .7s ease;overflow:hidden}
+.booths[data-mood="c360"]{background:#0A0A0A}
+.booths[data-mood="clasica"]{background:#5B22C9}
+.booths[data-mood="ring"]{background:#1B1F0C}
+.booths[data-mood="balloon"]{background:#3A1150}
+.booths[data-mood="vip"]{background:#1E1E24}
+.bview.on.k-balloon img{animation:bob 1.4s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-14px) scale(1.02)}}
+.bview.k-vip img{scale:1.18}
+@media (max-width:980px){.bview.k-vip img{scale:1.08}}
+.bview.on.k-vip .disc{background:radial-gradient(closest-side,rgba(255,255,255,.45),transparent 70%)}
+.binfo .lead{font-size:19px;margin-bottom:30px}
+.booths .bgword{position:absolute;top:50%;left:50%;translate:-50% -50%;font:400 30vw/1 var(--f-display);color:rgba(255,255,255,.04);white-space:nowrap;pointer-events:none;text-transform:uppercase;transition:opacity .4s}
+.booths .wrap{position:relative}
+.bhead{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.bhead h2{font-size:clamp(48px,7vw,104px)}
+.tabs{display:flex;gap:6px;background:rgba(255,255,255,.08);border:1px solid var(--line);border-radius:var(--r-pill);padding:6px;flex-wrap:wrap}
+.tabs button{background:none;border:0;padding:12px 18px;border-radius:var(--r-pill);font:700 13px/1 var(--f-accent);color:#ddd;transition:background .25s,color .25s}
+.tabs button[aria-selected="true"]{background:var(--lime);color:var(--ink)}
+.bgrid{display:grid;grid-template-columns:.9fr 1.2fr .8fr;gap:28px;align-items:center}
+.binfo h3{font:400 clamp(44px,5vw,72px)/.9 var(--f-display);text-transform:uppercase}
+.binfo .lead{color:rgba(255,255,255,.78);margin:16px 0 22px;max-width:36ch}
+.binfo ul{list-style:none;padding:0;margin:0 0 28px;display:flex;flex-wrap:wrap;gap:8px}
+.binfo li{font-size:13px;border:1px solid rgba(255,255,255,.25);border-radius:var(--r-pill);padding:7px 12px}
+.bview{position:relative;aspect-ratio:1/1;max-width:100%;display:grid;place-items:center}
+.bview .disc{position:absolute;inset:10%;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.16),transparent 70%)}
+.bview img{position:absolute;left:6%;top:6%;width:88%;height:84%;object-position:center bottom;object-fit:contain;filter:drop-shadow(0 34px 34px rgba(0,0,0,.5));transition:opacity .35s ease, transform .5s cubic-bezier(.2,.8,.2,1)}
+.bview img.swap{opacity:0;transform:translateY(24px) scale(.96)}
+.price{position:absolute;top:4%;right:2%;background:var(--lime);color:var(--ink);border-radius:50%;width:132px;height:132px;display:grid;place-items:center;text-align:center;rotate:12deg;box-shadow:0 18px 40px -14px rgba(0,0,0,.6)}
+.price small{display:block;font:700 10px/1 var(--f-accent);letter-spacing:.12em;text-transform:uppercase}
+.price strong{display:block;font:900 26px/1 var(--f-accent);letter-spacing:-.04em;margin-top:4px}
+.price em{font-style:normal;font-size:11px}
+.play{position:absolute;bottom:3%;left:50%;translate:-50% 0;background:rgba(10,10,10,.75);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:var(--r-pill);padding:10px 16px;font:700 12px/1 var(--f-accent);display:flex;gap:8px;align-items:center;white-space:nowrap}
+.play i{width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px var(--lime)}
+/* efectos por cabina */
+.fx-ring{position:absolute;border-radius:50%;pointer-events:none;opacity:0;transition:opacity .4s;box-shadow:0 0 26px 8px rgba(255,255,255,.9),0 0 70px 26px rgba(255,255,255,.45),inset 0 0 22px 6px rgba(255,255,255,.85)}
+.bview.on.k-ring .fx-ring{opacity:1}
+.fx-spin{position:absolute;left:50%;bottom:16%;width:70%;aspect-ratio:3/1;translate:-50% 0;border-radius:50%;border:2px solid var(--lime);opacity:0;transition:opacity .4s}
+.bview.on.k-c360 .fx-spin{opacity:1;animation:spin 2.4s linear infinite}
+.bview.on.k-c360 img{animation:wobble 2.4s ease-in-out infinite}
+@keyframes wobble{25%{transform:rotate(-1.5deg) translateX(-6px)}75%{transform:rotate(1.5deg) translateX(6px)}}
+.bview .strip img{position:static;display:block;width:100%;height:auto;max-width:none;max-height:none;border-radius:2px;filter:none!important;scale:1!important;animation:none!important;transform:none!important;transition:none!important}
+.strip{position:absolute;z-index:3;left:60%;top:22%;width:17%;background:var(--paper);padding:4px;border-radius:3px;box-shadow:0 14px 30px rgba(0,0,0,.4);display:grid;gap:4px;opacity:0;transform:translateY(-20px) rotate(-6deg);transition:opacity .3s, transform .9s cubic-bezier(.2,.8,.2,1)}
+.strip span{aspect-ratio:4/3;border-radius:2px;background:linear-gradient(135deg,var(--violet),var(--lime))}
+.strip span:nth-child(2){background:linear-gradient(135deg,#222,var(--violet-2))}
+.strip span:nth-child(3){background:linear-gradient(135deg,var(--lime),#ff5f9e)}
+.strip b{font:900 7px/1 var(--f-accent);color:var(--ink);text-align:center;margin-top:2px}
+.bview.on:not(.k-c360) .strip{opacity:1;transform:translateY(16%) rotate(-6deg)}
+.bnext{justify-self:end;text-align:right;display:grid;gap:12px;justify-items:end;background:none;border:0;padding:0}
+.bnext .thumb{width:150px;aspect-ratio:1/1;border-radius:var(--r-lg);background:rgba(255,255,255,.08);border:1px solid var(--line);display:grid;place-items:center;padding:14px;transition:background .25s,transform .25s}
+.bnext:hover .thumb{background:rgba(255,255,255,.16);transform:rotate(-3deg)}
+.bnext .thumb img{max-height:100%;object-fit:contain}
+.bnext small{color:rgba(255,255,255,.65);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.bnext strong{font:700 15px/1.2 var(--f-accent)}
+.counter{font:400 64px/1 var(--f-display);color:rgba(255,255,255,.2)}
+.counter b{color:var(--paper);font-weight:400}
+@media (max-width:980px){
+  .bgrid{grid-template-columns:1fr}
+  .bview{order:-1;max-width:460px;margin-inline:auto;width:100%}
+  .bnext{justify-self:start;text-align:left;justify-items:start;grid-auto-flow:column;align-items:center}
+  .bnext .thumb{width:90px}
+  .counter{display:none}
+  .price{width:104px;height:104px}.price strong{font-size:20px}
+}
+
+/* BRANDEO */
+.brand{padding-block:110px}
+.brand-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:center}
+.brand h2{font-size:clamp(48px,6.4vw,96px);margin:18px 0 18px}
+.brand h2 span{color:var(--violet)}
+.brand .intro{max-width:46ch;color:#3a3a36;margin:0 0 28px}
+.ctrl{display:grid;gap:18px}
+.field label{display:block;font:700 11px/1 var(--f-accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:9px;color:#55554f}
+.field input[type=text]{width:100%;font:500 17px var(--f-body);padding:14px 16px;border-radius:14px;border:1.5px solid var(--line-d);background:var(--paper-2);color:var(--ink)}
+.field input[type=text]:focus{outline:none;border-color:var(--violet)}
+.swatches{display:flex;gap:10px;flex-wrap:wrap}
+.swatches button{width:40px;height:40px;border-radius:50%;border:3px solid var(--paper);box-shadow:0 0 0 1.5px var(--line-d);transition:transform .15s}
+.swatches button[aria-pressed="true"]{box-shadow:0 0 0 2.5px var(--ink);transform:scale(1.08)}
+.upload{display:flex;align-items:center;gap:12px;border:1.5px dashed #b9b9b2;border-radius:14px;padding:12px 14px;cursor:pointer;font-size:14px;color:#55554f}
+.upload input{position:absolute;opacity:0;width:1px;height:1px}
+.upload .ic{width:36px;height:36px;border-radius:10px;background:var(--ink);color:var(--lime);display:grid;place-items:center;flex:none}
+.extras{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.extras label{display:flex;justify-content:space-between;align-items:center;gap:10px;border:1.5px solid var(--line-d);border-radius:12px;padding:11px 13px;font-size:14px;cursor:pointer;transition:background .2s,border-color .2s}
+.extras label:has(input:checked){background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.extras label:has(input:checked) em{color:var(--lime)}
+.extras input{accent-color:var(--violet);margin:0}
+.extras span{display:flex;align-items:center;gap:8px}
+.extras em{font-style:normal;font:700 12px var(--f-accent);white-space:nowrap}
+.mock{position:relative;border-radius:var(--r-xl);background:var(--ink);aspect-ratio:1/1;overflow:hidden;display:grid;place-items:center}
+.mock::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 50% 60%,var(--bcol,#7D39EB) 0%,transparent 70%);opacity:.55;transition:background .4s}
+.mock .booth{position:relative;width:82%;max-width:100%}
+.mock .booth img{width:100%;filter:drop-shadow(0 30px 30px rgba(0,0,0,.6))}
+.panel{position:absolute;display:grid;place-items:center;text-align:center;overflow:hidden;background:var(--bcol,#7D39EB);mix-blend-mode:multiply;transition:background .4s}
+.panel-l{left:16.4%;top:7.4%;width:18.6%;height:76.5%}
+.panel-r{left:67%;top:5.4%;width:22.8%;height:83%}
+.ptext{position:absolute;display:grid;place-items:center;text-align:center;padding:6%;color:#fff;font:400 clamp(16px,2.6vw,34px)/.9 var(--f-display);text-transform:uppercase;overflow:hidden;word-break:break-word}
+.ptext img{max-width:80%;max-height:40%;object-fit:contain}
+.ptext.vert span{writing-mode:vertical-rl;rotate:180deg}
+.mock .badge{position:absolute;left:18px;top:18px}
+.mock .sum{position:absolute;left:16px;right:16px;bottom:16px;display:flex;justify-content:space-between;align-items:center;gap:12px;background:rgba(255,255,255,.95);color:var(--ink);border-radius:18px;padding:10px 10px 10px 18px;flex-wrap:wrap}
+.mock .sum small{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#6a6a64}
+.mock .sum strong{font:900 22px/1.1 var(--f-accent);letter-spacing:-.03em}
+@media (max-width:900px){.brand-grid{grid-template-columns:1fr}.extras{grid-template-columns:1fr}}
+
+/* GALERÍA abanico */
+.gallery{padding-block:110px 140px;overflow:hidden;position:relative}
+.gallery .wrap{text-align:center}
+.gallery h2{font-size:clamp(48px,7vw,104px)}
+.gallery p.sub{color:#bdbdb6;max-width:52ch;margin:16px auto 0}
+.fan{position:relative;height:clamp(300px,42vw,470px);margin-top:56px}
+.print{position:absolute;left:50%;top:50%;width:clamp(150px,19vw,240px);background:var(--paper);color:var(--ink);padding:9px 9px 0;border-radius:6px;box-shadow:0 26px 50px -20px rgba(0,0,0,.8);
+  transform:translate(-50%,-50%) translateX(calc(var(--x) * var(--p,1))) rotate(calc(var(--r) * var(--p,1)));transition:transform .2s linear;will-change:transform}
+.print .ph{aspect-ratio:3/4;border-radius:3px;display:grid;place-items:center;position:relative;overflow:hidden}
+.print .ph::after{content:"Tu foto aquí";font:700 10px/1 var(--f-accent);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.75);position:absolute;bottom:10px}
+.print .cap{display:flex;justify-content:space-between;align-items:center;padding:10px 2px 11px;font:700 12px/1 var(--f-accent)}
+.print .cap i{font-style:normal;font-weight:500;color:#8a8a84;font-size:10px}
+.print .tape{position:absolute;top:-10px;left:50%;translate:-50% 0;width:62px;height:20px;background:rgba(198,255,51,.85);rotate:-4deg}
+.print:hover{z-index:9}
+@media (max-width:640px){.print:nth-child(1),.print:nth-child(6){display:none}}
+
+/* PASOS */
+.steps{padding-block:110px}
+.steps h2{font-size:clamp(48px,6.6vw,96px);max-width:12ch}
+.steps .row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px;counter-reset:s}
+.step{border-radius:var(--r-xl);padding:28px;min-height:280px;display:flex;flex-direction:column;justify-content:space-between;gap:28px;position:relative;overflow:hidden}
+.step:nth-child(1){background:var(--paper-2)}
+.step:nth-child(2){background:var(--violet);color:var(--paper)}
+.step:nth-child(3){background:var(--lime)}
+.step .num{font:400 120px/.8 var(--f-display)}
+.step h3{font:700 22px/1.15 var(--f-accent);letter-spacing:-.02em;margin-bottom:8px}
+.step p{margin:0;font-size:15px;opacity:.85}
+.logi{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.logi span{border:1.5px solid var(--line-d);border-radius:var(--r-pill);padding:9px 14px;font-size:14px}
+.logi b{font-family:var(--f-accent);font-size:13px}
+@media (max-width:860px){.steps .row{grid-template-columns:1fr}.step{min-height:0}}
+
+/* TESTIMONIOS chat */
+.chat{padding-block:110px;overflow:hidden;position:relative;background:var(--lime);color:var(--ink)}
+.chat h2 span{color:var(--violet)}
+.chat .bgw span{color:rgba(10,10,10,.06)!important}
+.chat .phone{box-shadow:0 40px 80px -30px rgba(10,10,10,.55);color:var(--paper)}
+.msgs-view{height:480px;overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(transparent,#000 9%,#000 88%,transparent);mask-image:linear-gradient(transparent,#000 9%,#000 88%,transparent)}
+.msgs-track{display:grid;gap:12px;padding:0 4px 12px;will-change:transform}
+.msgs-view{padding-top:18px;overflow-y:auto!important;scrollbar-width:none;overscroll-behavior:contain;cursor:grab}
+.msgs-view::-webkit-scrollbar{display:none}
+.msgs-track.run{animation:chatscroll var(--dur,45s) linear infinite}
+.msgs-view:hover .msgs-track.run{animation-play-state:paused}
+@keyframes chatscroll{to{transform:translateY(-50%)}}
+.tmsg{background:#262626;border-radius:18px;border-bottom-left-radius:6px;padding:12px 14px;max-width:92%;font-size:14px;line-height:1.5}
+.tmsg header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.tmsg .pic{width:42px;height:42px;border-radius:50%;flex:none;border:2px solid rgba(255,255,255,.14);background:#1a1a1a;display:grid;place-items:center;overflow:hidden;font:700 8px/1 var(--f-accent);letter-spacing:.06em;text-transform:uppercase;color:rgba(198,255,51,.75)}
+.tmsg .pic img{width:100%;height:100%;object-fit:cover}
+.tmsg header b{display:block;font:700 13px/1.2 var(--f-accent);color:var(--lime)}
+.tmsg header small{display:block;font-size:12.5px;color:#b4b4ad;margin-top:2px}
+.tmsg p{margin:0;color:#ececE6}
+.tmsg time{display:block;text-align:right;font-size:10.5px;color:#8a8a84;margin-top:6px}
+@media (max-width:640px){.msgs-view{height:420px}}
+@media (prefers-reduced-motion:reduce){.msgs-view{overflow-y:auto}}
+.chat .bgw{position:absolute;left:0;right:0;top:50%;translate:0 -50%;display:grid;gap:0;pointer-events:none}
+.chat .bgw span{font:400 clamp(70px,14vw,200px)/.85 var(--f-display);text-transform:uppercase;color:rgba(255,255,255,.05);white-space:nowrap;text-align:center}
+.chat .wrap{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.chat h2{font-size:clamp(48px,6.4vw,96px)}
+.phone{background:#121212;border:1px solid var(--line);border-radius:36px;padding:18px;max-width:420px;width:100%;justify-self:center;box-shadow:0 40px 80px -30px rgba(125,57,235,.6)}
+.phone .top{display:flex;align-items:center;gap:12px;padding:4px 6px 16px;border-bottom:1px solid var(--line)}
+.phone .av{width:40px;height:40px;border-radius:50%;background:var(--lime);color:var(--ink);display:grid;place-items:center;font:900 13px var(--f-accent)}
+.phone .top b{display:block;font-size:15px}
+.phone .top small{color:var(--lime);font-size:12px}
+.msgs{display:grid;gap:10px;padding:18px 4px 6px}
+.msg{max-width:84%;padding:12px 14px;border-radius:18px;font-size:14.5px;line-height:1.45}
+.msg.in{background:#262626;border-bottom-left-radius:6px}
+.msg.out{background:var(--lime);color:var(--ink);justify-self:end;border-bottom-right-radius:6px}
+.msg small{display:block;font-size:11px;opacity:.6;margin-top:6px}
+.msg .ph-note{display:inline-block;font:700 9.5px/1 var(--f-accent);letter-spacing:.1em;text-transform:uppercase;background:var(--violet);color:#fff;padding:4px 7px;border-radius:6px;margin-bottom:6px}
+.stars{color:var(--lime);letter-spacing:2px}
+@media (max-width:900px){.chat .wrap{grid-template-columns:1fr}}
+
+/* COTIZADOR */
+.quote{padding-block:110px}
+.qbox{background:var(--ink);color:var(--paper);border-radius:var(--r-xl);padding:clamp(22px,4vw,48px);display:grid;grid-template-columns:1.1fr .9fr;gap:40px;position:relative;overflow:hidden}
+.qbox::after{content:"";position:absolute;right:-120px;top:-120px;width:340px;height:340px;border-radius:50%;background:radial-gradient(closest-side,rgba(198,255,51,.35),transparent)}
+.qbox h2{font-size:clamp(44px,5.4vw,80px);margin:16px 0 8px}
+.qbox .s{color:#bdbdb6;margin:0 0 28px}
+.qstep{margin-bottom:24px}
+.qstep > b{display:flex;align-items:center;gap:10px;font:700 12px/1 var(--f-accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+.qstep > b i{font-style:normal;width:24px;height:24px;border-radius:50%;background:var(--lime);color:var(--ink);display:grid;place-items:center;font-size:11px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opts button{background:transparent;border:1.5px solid var(--line);border-radius:var(--r-pill);padding:11px 16px;font-size:14px;transition:all .2s}
+.opts button:hover{border-color:rgba(255,255,255,.5)}
+.opts button[aria-pressed="true"]{background:var(--paper);color:var(--ink);border-color:var(--paper);font-weight:700}
+.qstep input[type=date]{background:transparent;border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;color:var(--paper);font:500 15px var(--f-body);color-scheme:dark}
+.preview{position:relative;z-index:1;background:#1b1b1b;border:1px solid var(--line);border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:16px;align-self:stretch}
+.preview .bubble{flex:1;display:flex;flex-direction:column;justify-content:center;font-size:16px}
+.preview .wa{display:flex;align-items:center;gap:10px;font:700 12px/1 var(--f-accent);letter-spacing:.08em;text-transform:uppercase;color:var(--lime)}
+.bubble{background:#0f2f1f;border:1px solid rgba(37,211,102,.35);border-radius:18px 18px 6px 18px;padding:16px;font-size:15px;line-height:1.5;white-space:pre-line;min-height:120px}
+.total{display:flex;justify-content:space-between;align-items:end;border-top:1px dashed var(--line);padding-top:14px;gap:12px}
+.total small{color:#a9a9a2;font-size:12px;display:block}
+.total strong{font:900 32px/1 var(--f-accent);letter-spacing:-.04em}
+.total em{font-style:normal;font-size:12px;color:#a9a9a2;text-align:right}
+.preview .btn{justify-content:space-between}
+.preview .note{font-size:12px;color:#8f8f88;margin:0}
+@media (max-width:900px){.qbox{grid-template-columns:1fr}}
+
+/* CIERRE */
+.closer{background:var(--lime);color:var(--ink);padding-block:90px 40px;position:relative;overflow:hidden}
+.closer h2{font-size:clamp(64px,12vw,200px)}
+.closer h2 span{display:block;color:var(--violet)}
+.closer .row{display:flex;justify-content:space-between;align-items:end;gap:28px;flex-wrap:wrap;margin-top:28px}
+.closer p{max-width:40ch;margin:0;font-size:18px}
+.closer h2{font-size:clamp(52px,9vw,150px)}
+.socials{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:44px}
+.soc{display:flex;align-items:center;gap:18px;background:var(--ink);color:var(--paper);text-decoration:none;border-radius:28px;padding:20px 22px;transition:transform .25s ease, background .25s ease}
+.soc:hover{transform:translateY(-4px) rotate(-1deg);background:var(--violet)}
+.soc-ic{width:64px;height:64px;border-radius:20px;flex:none;display:grid;place-items:center;background:var(--lime);color:var(--ink);transition:transform .3s ease}
+.soc:hover .soc-ic{transform:rotate(-8deg) scale(1.06)}
+.soc-tx{display:grid;gap:2px;min-width:0;flex:1}
+.soc-tx small{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#a9a9a2}
+.soc:hover .soc-tx small{color:rgba(255,255,255,.75)}
+.soc-tx strong{font:400 clamp(30px,3.4vw,44px)/1 var(--f-display);text-transform:uppercase}
+.soc-tx em{font-style:normal;font-size:15px;color:var(--lime);overflow-wrap:anywhere}
+.soc-ar{width:48px;height:48px;border-radius:50%;flex:none;display:grid;place-items:center;background:var(--paper);color:var(--ink);font-size:20px;transition:transform .25s}
+.soc:hover .soc-ar{transform:rotate(45deg)}
+@media (max-width:720px){.socials{grid-template-columns:1fr}.soc-ar{width:40px;height:40px}}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:2px solid var(--ink);margin-top:72px;padding-top:20px;font-size:14px}
+.foot a{text-decoration:none;font-weight:700}
+
+/* WhatsApp flotante con badge giratorio */
+.fab{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:55;width:92px;height:92px;display:grid;place-items:center;text-decoration:none}
+.fab svg.ringtxt{position:absolute;inset:0;animation:spin 12s linear infinite}
+.fab .core{width:56px;height:56px;border-radius:50%;background:var(--lime);color:var(--ink);display:grid;place-items:center;box-shadow:0 10px 30px -6px rgba(0,0,0,.6);transition:transform .2s}
+.fab:hover .core{transform:scale(1.08)}
+.fab text{font:700 9.5px var(--f-accent);letter-spacing:2.4px;fill:var(--paper);text-transform:uppercase}
+.fab .ringbg{fill:var(--ink)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="flash" id="flash" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="GM Eventos, inicio"><b>GM<i>.</i></b><span>Eventos</span></a>
+    <nav class="links" aria-label="Secciones">
+      <a href="#cabinas" class="on">Cabinas</a>
+      <a href="#nosotros">Nosotros</a>
+      <!-- Ocultos con sus secciones: <a href="#brandeo">Brandeo</a> <a href="#eventos">Eventos</a> <a href="#reservar">Cómo reservar</a> -->
+      <a href="#testimonios">Testimonios</a>
+      <a href="#cotizar">Cotizar</a>
+    </nav>
+    <a class="btn btn-lime js-wa" href="#cotizar" data-msg="Hola GM Eventos, quiero información para mi evento.">WhatsApp <span class="ar" aria-hidden="true">↗</span></a>
+  </div>
+</header>
+
+<main id="top">
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <div class="hero-top"><span class="tag">Photobooths premium · Guatemala</span></div>
+      <h1 class="display">
+        <span>Tu evento</span>
+        <span class="l2">merece</span>
+        <span class="l3"><em>un flash</em></span>
+      </h1>
+      <p>Creamos experiencias para eventos, personalizadas para tu celebración o tu marca. Nos encargamos de todo, desde el diseño gráfico hasta el montaje y la atención a tus invitados.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-lime" href="#cotizar">Cotiza en 1 minuto <span class="ar" aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="#cabinas">Ver cabinas</a>
+      </div>
+    </div>
+
+    <div class="stage" aria-label="Cabinas de GM Eventos">
+      <div class="glow"></div>
+      <div class="orbit"></div>
+      <img class="hero-booth on" src="img/cabina360.webp" alt="Cabina 360° con plataforma giratoria y aro de luz" width="775" height="911">
+      <img class="hero-booth" src="img/ring.webp" alt="Ring Booth con aro de luz" width="683" height="924">
+      <img class="hero-booth" src="img/clasica.webp" alt="Cabina Clásica con paneles personalizables" width="774" height="796">
+      <span class="hero-name" id="heroName" aria-live="polite">Cabina 360°</span>
+      <span class="tag v stk">Sonríe, posa y comparte</span>
+      <div class="fcard c1"><span class="ic" aria-hidden="true">✦</span><div><b>Diseño a la medida</b>Si no tienes el arte, lo creamos para tu evento.</div></div>
+      <div class="fcard c2"><span class="ic" aria-hidden="true">◎</span><div><b>Brandeo corporativo</b>Tu marca en la cabina, el fondo y cada foto.</div></div>
+      <div class="fcard c3"><span class="ic" aria-hidden="true">⚡</span><div><b>Entrega inmediata</b>Fotos y videos en el momento, más galería web privada.</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true"><div class="track">
+  <span>Bodas<i>✺</i>XV años<i>✺</i>Corporativos<i>✺</i>Graduaciones<i>✺</i>Cumpleaños<i>✺</i>Despedidas de soltera<i>✺</i></span>
+  <span>Bodas<i>✺</i>XV años<i>✺</i>Corporativos<i>✺</i>Graduaciones<i>✺</i>Cumpleaños<i>✺</i>Despedidas de soltera<i>✺</i></span>
+</div></div>
+
+<!-- MANIFIESTO -->
+<section class="light manifesto" id="nosotros">
+  <div class="wrap">
+    <p class="eyebrow" style="margin:0 0 26px;color:var(--violet);text-align:center">Así trabajamos</p>
+    <div class="rv-wrap">
+      <h2 class="reveal" id="reveal">Tú solo reservas la fecha.<br>Nosotros nos encargamos de lo demás.</h2>
+      <span class="chip c-a" aria-hidden="true">@bodas</span>
+      <span class="chip v c-b" aria-hidden="true">@xvaños</span>
+      <span class="chip l c-c" aria-hidden="true">@corporativo</span>
+    </div>
+    <div class="cf" id="cf" aria-roledescription="carrusel" aria-label="Galería de eventos">
+      <div class="cf-glow" aria-hidden="true"></div>
+      <div class="cf-track" id="cfTrack"></div>
+      <div class="cf-dots" id="cfDots" aria-hidden="true"></div>
+    </div>
+    <ul class="incl">
+      <li><span class="n">◐</span><b>Montaje completo</b><p>Nos encargamos del montaje antes de que lleguen tus invitados.</p></li>
+      <li><span class="n">✎</span><b>Diseño gráfico</b><p>Creamos plantillas, stickers y marcos personalizados para tu evento.</p></li>
+      <li><span class="n">★</span><b>Props de lujo</b><p>Accesorios personalizados para divertirse frente a la cámara.</p></li>
+      <li><span class="n">⌘</span><b>Galería web privada</b><p>Tus fotos y videos en un enlace para compartir y descargar.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- CABINAS -->
+<section class="booths" id="cabinas" data-mood="c360">
+  <div class="bgword" id="bgword" aria-hidden="true">360°</div>
+  <div class="wrap">
+    <div class="bhead">
+      <h2 class="display">Elige tu cabina</h2>
+      <div class="tabs" role="tablist" aria-label="Cabinas">
+        <button role="tab" id="t-c360" aria-selected="true" data-k="c360">Cabina 360°</button>
+        <button role="tab" id="t-clasica" aria-selected="false" data-k="clasica">Clásica</button>
+        <button role="tab" id="t-ring" aria-selected="false" data-k="ring">Ring Booth</button>
+        <button role="tab" id="t-balloon" aria-selected="false" data-k="balloon">Balloon Box</button>
+        <button role="tab" id="t-vip" aria-selected="false" data-k="vip">Fotógrafo VIP</button>
+      </div>
+    </div>
+
+    <div class="bgrid" role="tabpanel" aria-live="polite">
+      <div class="binfo">
+        <h3 id="bname">Cabina 360°</h3>
+        <p class="lead" id="blead"></p>
+        <a class="btn btn-lime js-wa" id="bcta" href="#cotizar">Reservar esta cabina <span class="ar" aria-hidden="true">↗</span></a>
+      </div>
+      <div class="bview k-c360" id="bview">
+        <div class="disc"></div>
+        <div class="fx-spin"></div>
+        <img id="bimg" src="img/cabina360.webp" alt="Cabina 360°">
+        <div class="fx-ring" id="fxring"></div>
+        <div class="strip" id="strip"><img src="img/tira-ejemplo.webp" alt="Ejemplo de tira de fotos impresa" width="360" height="1071"></div>
+        <button class="play" id="bplay"><i></i><span id="bplaytxt">Hazla girar</span></button>
+      </div>
+      <button class="bnext" id="bnext" aria-label="Ver siguiente cabina">
+        <span class="thumb"><img id="nimg" src="img/clasica.webp" alt=""></span>
+        <span><small>Siguiente</small><br><strong id="nname">Clásica</strong></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDEO -->
+<!-- OCULTA: para reactivar, quita el atributo hidden -->
+<section class="light brand" id="brandeo" hidden>
+  <div class="wrap brand-grid">
+    <div>
+      <span class="tag v">Para empresas</span>
+      <h2 class="display">Tu marca,<br><span>en todas</span> las fotos</h2>
+      <p class="intro">En eventos corporativos personalizamos la cabina, el fondo y cada impresión con tu identidad. Pruébalo: escribe el nombre de tu empresa, elige el color o sube tu logo.</p>
+      <div class="ctrl">
+        <div class="field"><label for="bname-in">Nombre de tu empresa o evento</label><input type="text" id="bname-in" maxlength="22" value="Tu marca aquí"></div>
+        <div class="field"><label>Color de marca</label>
+          <div class="swatches" id="sw">
+            <button aria-pressed="true" aria-label="Violeta" data-c="#7D39EB" style="background:#7D39EB"></button>
+            <button aria-pressed="false" aria-label="Lima" data-c="#B7EC1F" style="background:#B7EC1F"></button>
+            <button aria-pressed="false" aria-label="Rojo" data-c="#E3262F" style="background:#E3262F"></button>
+            <button aria-pressed="false" aria-label="Azul" data-c="#1749D8" style="background:#1749D8"></button>
+            <button aria-pressed="false" aria-label="Negro" data-c="#2A2A2A" style="background:#2A2A2A"></button>
+            <button aria-pressed="false" aria-label="Dorado" data-c="#C9A23B" style="background:#C9A23B"></button>
+          </div>
+        </div>
+        <div class="field"><label for="logo-in">Tu logo (opcional)</label>
+          <label class="upload" for="logo-in"><span class="ic">↑</span><span id="logo-txt">Sube un PNG o SVG y míralo en la cabina</span><input type="file" id="logo-in" accept="image/*"></label>
+        </div>
+        <div class="field"><label>Extras de branding</label>
+          <div class="extras" id="extras">
+            <label><span><input type="checkbox" data-p="700" data-n="Backdrop curvo">Backdrop curvo</span><em>Q700</em></label>
+            <label><span><input type="checkbox" data-p="650" data-n="Backdrop pared">Backdrop pared</span><em>Q650</em></label>
+            <label><span><input type="checkbox" data-p="800" data-n="Banderola">Banderola</span><em>Q800</em></label>
+            <label><span><input type="checkbox" data-p="375" data-n="Display">Display</span><em>Q375</em></label>
+            <label><span><input type="checkbox" data-p="375" data-n="Roll Up">Roll Up</span><em>Q375</em></label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mock" id="mock">
+      <span class="tag badge">Vista previa en vivo</span>
+      <div class="booth">
+        <img src="img/clasica.webp" alt="Cabina Clásica con paneles personalizados" width="686" height="652">
+        <div class="panel panel-l"></div><div class="panel panel-r"></div>
+        <div class="ptext vert panel-l" id="pl"><span>Tu marca aquí</span></div>
+        <div class="ptext panel-r" id="pr"><span>Tu marca aquí</span></div>
+      </div>
+      <div class="sum"><div><small>Clásica + extras</small><strong id="bsum">Q3,900</strong></div><a class="btn btn-ink js-wa" id="brand-cta" href="#cotizar">Cotizar con mi marca <span class="ar" aria-hidden="true">↗</span></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<!-- OCULTA: para reactivar, quita el atributo hidden -->
+<section class="gallery" id="eventos" hidden>
+  <div class="wrap">
+    <p class="eyebrow" style="margin:0 0 14px;color:var(--lime)">Si hay celebración, ahí estamos</p>
+    <h2 class="display">Cada fiesta,<br>su propia tira</h2>
+    <p class="sub">Desliza para abrir la baraja. Aquí irán las fotos reales de tus eventos, separadas por tipo de celebración.</p>
+  </div>
+  <div class="fan" id="fan">
+    <div class="print" style="--x:-520px;--r:-16deg"><span class="tape"></span><div class="ph" style="background:linear-gradient(160deg,#2b2b2b,#7D39EB)"></div><div class="cap">Despedidas<i>01</i></div></div>
+    <div class="print" style="--x:-312px;--r:-10deg"><span class="tape"></span><div class="ph" style="background:linear-gradient(160deg,#C6FF33,#2b2b2b)"></div><div class="cap">Graduaciones<i>02</i></div></div>
+    <div class="print" style="--x:-104px;--r:-3deg"><span class="tape"></span><div class="ph" style="background:linear-gradient(160deg,#A77BFF,#151515)"></div><div class="cap">Bodas<i>03</i></div></div>
+    <div class="print" style="--x:104px;--r:3deg"><span class="tape"></span><div class="ph" style="background:linear-gradient(160deg,#151515,#C6FF33)"></div><div class="cap">XV años<i>04</i></div></div>
+    <div class="print" style="--x:312px;--r:10deg"><span class="tape"></span><div class="ph" style="background:linear-gradient(160deg,#7D39EB,#C6FF33)"></div><div class="cap">Corporativos<i>05</i></div></div>
+    <div class="print" style="--x:520px;--r:16deg"><span class="tape"></span><div class="ph" style="background:linear-gradient(160deg,#2b2b2b,#A77BFF)"></div><div class="cap">Cumpleaños<i>06</i></div></div>
+  </div>
+</section>
+
+<!-- PASOS -->
+<!-- OCULTA: para reactivar, quita el atributo hidden -->
+<section class="light steps" id="reservar" hidden>
+  <div class="wrap">
+    <p class="eyebrow" style="margin:0 0 14px;color:var(--violet)">Cómo reservar</p>
+    <h2 class="display">Tres pasos y tu fecha queda separada</h2>
+    <div class="row">
+      <article class="step"><span class="num">1</span><div><h3>Cotizas</h3><p>Eliges la cabina y los extras aquí abajo. Te llega todo armado a WhatsApp.</p></div></article>
+      <article class="step"><span class="num">2</span><div><h3>Das el 50% de anticipo</h3><p>Con el anticipo la fecha es tuya. El resto se liquida antes del evento.</p></div></article>
+      <article class="step"><span class="num">3</span><div><h3>Disfrutas tu fiesta</h3><p>Llegamos con anticipación, montamos todo y nos encargamos de cada foto.</p></div></article>
+    </div>
+    <div class="logi">
+      <span>Espacio mínimo <b>3 × 3 m</b></span>
+      <span>Toma corriente <b>110 V</b></span>
+      <span>Servicio de <b>3 horas</b></span>
+      <span>Equipo de <b>4–5 personas</b> vestidas de negro</span>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="chat" id="testimonios">
+  <div class="bgw" aria-hidden="true"><span>Feedback</span><span>Feedback</span><span>Feedback</span></div>
+  <div class="wrap">
+    <div>
+      <p class="eyebrow" style="margin:0 0 14px;color:var(--violet)">Testimonios</p>
+      <h2 class="display">Historias que<br><span>respaldan nuestro trabajo</span></h2>
+    </div>
+    <div class="phone" aria-label="Testimonios de clientes en formato de chat">
+      <div class="top"><span class="av">GM</span><div><b>GM Eventos</b><small>en línea</small></div></div>
+      <div class="msgs-view" id="chatView"><div class="msgs-track" id="chatTrack"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- COTIZADOR -->
+<section class="light quote" id="cotizar">
+  <div class="wrap">
+    <div class="qbox">
+      <div>
+        <span class="tag">Cotiza en 1 minuto</span>
+        <h2 class="display">Arma tu cotización</h2>
+        <p class="s">Elige tu photobooth, selecciona la fecha de tu evento y recibe una respuesta al instante por WhatsApp.</p>
+        <div class="qstep"><b><i>1</i>Tipo de evento</b><div class="opts" data-g="evento">
+          <button aria-pressed="true">Boda</button><button aria-pressed="false">XV años</button><button aria-pressed="false">Corporativo</button><button aria-pressed="false">Graduación</button><button aria-pressed="false">Cumpleaños</button><button aria-pressed="false">Despedida de soltera</button><button aria-pressed="false" data-otro>Otro</button>
+        </div></div>
+        <div class="qstep"><b><i>2</i>Photobooths <span style="text-transform:none;letter-spacing:0;font:500 13px var(--f-body);color:#a9a9a2">(puedes elegir varios)</span></b><div class="opts" data-g="cabina" data-multi>
+          <button aria-pressed="true">Cabina 360°</button><button aria-pressed="false">Cabina Clásica</button><button aria-pressed="false">Ring Booth</button><button aria-pressed="false">Balloon Box</button><button aria-pressed="false">Fotógrafo VIP</button>
+        </div></div>
+        <div class="qstep"><b><i>3</i>Fecha del evento</b><input type="date" id="qdate" aria-label="Fecha del evento"></div>
+      </div>
+      <div class="preview">
+        <span class="wa">● Tu mensaje para WhatsApp</span>
+        <div class="bubble" id="qmsg"></div>
+        <a class="btn btn-lime" id="qsend" href="#" target="_blank" rel="noopener">Enviar por WhatsApp <span class="ar" aria-hidden="true">↗</span></a>
+        <p class="note">Te enviamos la cotización y la disponibilidad por WhatsApp.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CIERRE -->
+<section class="closer">
+  <div class="wrap">
+    <h2 class="display">¿Te gusta lo que ves?<span>Nos vemos en redes</span></h2>
+    <div class="socials">
+      <a class="soc" href="https://www.instagram.com/gm.eventos360/" target="_blank" rel="noopener" aria-label="Seguir a GM Eventos en Instagram">
+        <span class="soc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></span>
+        <span class="soc-tx"><small>Síguenos en</small><strong>Instagram</strong><em>@gm.eventos360</em></span>
+        <span class="soc-ar" aria-hidden="true">↗</span>
+      </a>
+      <a class="soc" href="https://www.tiktok.com/@gm.eventoss" target="_blank" rel="noopener" aria-label="Seguir a GM Eventos en TikTok">
+        <span class="soc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M12.53.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07Z"/></svg></span>
+        <span class="soc-tx"><small>Síguenos en</small><strong>TikTok</strong><em>@gm.eventoss</em></span>
+        <span class="soc-ar" aria-hidden="true">↗</span>
+      </a>
+    </div>
+    <div class="foot">
+      <span>© 2026 GM Eventos · Guatemala</span>
+      <a href="#cotizar">Cotiza tu evento →</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<a class="fab js-wa" href="#cotizar" aria-label="Escríbenos por WhatsApp" data-msg="Hola GM Eventos, quiero reservar una fecha.">
+  <svg class="ringtxt" viewBox="0 0 92 92" aria-hidden="true"><circle class="ringbg" cx="46" cy="46" r="46"/><defs><path id="cp" d="M46,46 m-35,0 a35,35 0 1,1 70,0 a35,35 0 1,1 -70,0"/></defs><text><textPath href="#cp">Reserva tu fecha • Reserva tu fecha •</textPath></text></svg>
+  <span class="core"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.2Z"/></svg></span>
+</a>
+
+<script>
+/* Número de WhatsApp Business de GM Eventos (formato internacional, sin + ni espacios). Ej: "50212345678" */
+const WA_NUMBER = "50233696397";
+const waLink = (msg) => "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg);
+const fmt = (n) => "Q" + n.toLocaleString("en-US");
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* enlaces de WhatsApp simples */
+document.querySelectorAll(".js-wa[data-msg]").forEach(a => { a.href = waLink(a.dataset.msg); a.target = "_blank"; a.rel = "noopener"; });
+
+/* Testimonios: chat que baja solo. Para agregar la foto, llena foto con la ruta (ej. "img/logos/uvg.webp") */
+const TESTIMONIOS = [
+  { nombre:"Universidad del Valle de Guatemala (UVG)", persona:"Jennifer Garzona", foto:"img/logos/uvg.webp", hora:"9:41",
+    texto:"Trabajar con Kevin ha sido una excelente experiencia. Su creatividad, profesionalismo y atención al detalle se reflejan en cada proyecto. Siempre logra capturar la esencia de nuestras actividades y transformarlas en contenido audiovisual de alta calidad que conecta con nuestra comunidad." },
+  { nombre:"Madre de familia", persona:"Mili de Coloma", foto:"img/logos/mili-coloma.webp", hora:"9:58",
+    texto:"Contratamos la cabina 360 para el cumpleaños de mi hija y ella y sus amigas pasaron haciendo videos. Nos gustó mucho que el diseño combinara con la temática de la fiesta." },
+  { nombre:"Vizzano", persona:"José Miguel Rodríguez", foto:"img/logos/vizzano.webp", hora:"10:15",
+    texto:"Desde el primer momento comprendió lo que queríamos transmitir como marca. Su capacidad para convertir ideas en contenido visual atractivo, cuidando cada detalle de la producción, hizo que el resultado superara nuestras expectativas." },
+  { nombre:"La Fráter", persona:"Jorge Erdmenger", foto:"img/logos/frater.webp", hora:"11:02",
+    texto:"Valoramos mucho su compromiso, creatividad y disposición para trabajar en equipo. Ha logrado capturar momentos especiales de nuestras actividades, transmitiendo a través de cada imagen y video la emoción y el propósito detrás de lo que hacemos." },
+  { nombre:"Shark Tank Guatemala", persona:"Nicolle Paz", foto:"img/logos/sharktank.webp", hora:"12:30",
+    texto:"Su profesionalismo y capacidad para trabajar en producciones dinámicas han sido clave para obtener resultados de gran calidad. Destacamos su creatividad, rapidez de respuesta y habilidad para capturar los momentos más importantes de cada proyecto." },
+  { nombre:"Reconstructora de Motores MG", persona:"Aaron Morataya", foto:"img/logos/mg.webp", hora:"14:48",
+    texto:"Gracias a su trabajo hemos logrado mostrar de una manera más profesional nuestros procesos y servicios. Su creatividad y conocimiento en producción audiovisual nos han ayudado a comunicar mejor lo que hacemos y fortalecer nuestra presencia digital." }
+];
+(function(){
+  const track = document.getElementById("chatTrack");
+  const build = (hidden) => TESTIMONIOS.filter(t => t.aprobado !== false).forEach(t => {
+    const m = document.createElement("article"); m.className = "tmsg"; if (hidden) m.setAttribute("aria-hidden","true");
+    const h = document.createElement("header");
+    const pic = document.createElement("span"); pic.className = "pic";
+    if (t.foto) { const im = document.createElement("img"); im.src = t.foto; im.alt = ""; pic.append(im); } else pic.textContent = "Foto";
+    const who = document.createElement("div");
+    const b = document.createElement("b"); b.textContent = t.nombre;
+    const s = document.createElement("small"); s.textContent = t.persona || "";
+    who.append(b, s); h.append(pic, who);
+    const p = document.createElement("p"); p.textContent = "“" + t.texto + "”";
+    const tm = document.createElement("time"); tm.textContent = t.hora + " ✓✓";
+    m.append(h, p, tm); track.append(m);
+  });
+  build(false);
+  if (reduce) return;
+  build(true);
+  /* Auto-scroll que se pausa al tocar, pasar el mouse o deslizar, y sigue al soltar */
+  const view = document.getElementById("chatView");
+  const SPEED = 28; /* px por segundo */
+  let pos = 0, last = null, paused = false, resumeT = null;
+  const half = () => track.scrollHeight / 2;
+  const wrap = () => { const h = half(); if (h <= 0) return; if (view.scrollTop >= h) view.scrollTop -= h; else if (view.scrollTop <= 0) view.scrollTop += h; };
+  function pause(){ paused = true; clearTimeout(resumeT); }
+  function resume(delay){ clearTimeout(resumeT); resumeT = setTimeout(() => { pos = view.scrollTop; paused = false; }, delay); }
+  view.addEventListener("mouseenter", pause);
+  view.addEventListener("mouseleave", () => resume(400));
+  view.addEventListener("touchstart", pause, { passive: true });
+  view.addEventListener("touchend", () => resume(1500), { passive: true });
+  view.addEventListener("wheel", () => { pause(); if (!view.matches(":hover")) resume(1500); }, { passive: true });
+  view.addEventListener("scroll", () => { if (paused) wrap(); }, { passive: true });
+  function tick(t){
+    if (last !== null && !paused) {
+      pos += Math.min(t - last, 100) / 1000 * SPEED;
+      const h = half(); if (h > 0 && pos >= h) pos -= h;
+      view.scrollTop = pos;
+    }
+    last = t; requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+
+/* Hero: rotación automática de cabinas */
+(function(){
+  const imgs = [...document.querySelectorAll(".stage .hero-booth")];
+  const names = ["Cabina 360°","Ring Booth","Cabina Clásica"];
+  const label = document.getElementById("heroName");
+  if (reduce || imgs.length < 2) return;
+  let i = 0;
+  setInterval(() => {
+    const prev = imgs[i]; i = (i + 1) % imgs.length; const next = imgs[i];
+    prev.classList.remove("on"); prev.classList.add("out");
+    label.classList.add("fade");
+    setTimeout(() => { prev.classList.remove("out"); }, 900);
+    setTimeout(() => { next.classList.add("on"); label.textContent = names[i]; label.classList.remove("fade"); }, 250);
+  }, 3800);
+})();
+
+/* Galería giratoria: 10 espacios. Para usar fotos reales, llena src con la ruta (ej. "img/eventos/boda-01.webp") */
+const GALLERY = [
+  { src:"img/galeria/foto-01.webp", title:"Fotos impresas", sub:"Imprimimos las fotos que se llevaron los invitados", g:"#151515" },
+  { src:"img/galeria/foto-02.webp", title:"Cabina 360: montaje personalizado", sub:"Adaptamos el montaje al estilo del evento", g:"#151515" },
+  { src:"img/galeria/foto-03.webp", title:"Ring Booth: backlight personalizado", sub:"Diseñamos el backlight para este evento", g:"#151515" },
+  { src:"img/galeria/foto-04.webp", title:"Props personalizados", sub:"Creamos accesorios con la temática del evento", g:"#151515" },
+  { src:"img/galeria/foto-05.webp", title:"Cabina Clásica: montaje de día", sub:"Montamos la cabina en un espacio al aire libre", g:"#151515" },
+  { src:"img/galeria/foto-06.webp", title:"Diseño de fotos y videos", sub:"Adaptamos el diseño a la línea gráfica del evento", g:"#151515" },
+  { src:"img/galeria/foto-07.webp", title:"Cabina 360: personalización completa", sub:"Personalizamos la cabina con la identidad de la marca", g:"#151515" },
+  { src:"img/galeria/foto-08.webp", title:"Galería web privada", sub:"Reunimos las fotos y videos del evento en una galería", g:"#151515" },
+  { src:"img/galeria/foto-09.webp", title:"Cabina Clásica: montaje de noche", sub:"Instalamos la cabina para una fiesta de noche", g:"#151515" },
+  { video:"img/galeria/video-360.mp4", poster:"img/galeria/video-360-poster.jpg", title:"Video de Cabina 360", sub:"Creamos un video listo para compartir en redes", g:"#151515" }
+];
+(function(){
+  const track = document.getElementById("cfTrack"), dotsBox = document.getElementById("cfDots"), box = document.getElementById("cf");
+  const n = GALLERY.length;
+  const cards = GALLERY.map((p, i) => {
+    const f = document.createElement("figure"); f.className = "cf-card";
+    const ph = document.createElement("div"); ph.className = "cf-ph"; ph.style.setProperty("--g", p.g);
+    if (p.video) { const vd = document.createElement("video"); vd.src = p.video; vd.poster = p.poster || ""; vd.muted = true; vd.loop = true; vd.playsInline = true; vd.autoplay = !reduce; vd.preload = "metadata"; vd.setAttribute("aria-label", p.title); ph.append(vd); }
+    else if (p.src) { const im = document.createElement("img"); im.src = p.src; im.alt = p.title; im.loading = "lazy"; ph.append(im); }
+    else { const s = document.createElement("span"); s.textContent = "Tu foto aquí"; ph.append(s); }
+    const cap = document.createElement("figcaption");
+    const b = document.createElement("b"); b.textContent = p.title;
+    const it = document.createElement("i"); it.textContent = p.sub;
+    cap.append(b); f.append(ph, cap); track.append(f);
+    dotsBox.append(document.createElement("i"));
+    return f;
+  });
+  const dots = [...dotsBox.children];
+  /* Giro continuo: SPEED = tarjetas por segundo */
+  const SPEED = 0.4;
+  let pos = 0, last = null, step = 0, lastDot = -1;
+  function measure(){ step = cards[0].offsetWidth * (innerWidth < 640 ? .55 : .66); }
+  function layout(){
+    cards.forEach((c, i) => {
+      let d = ((i - pos) % n + n) % n; if (d >= n / 2) d -= n;
+      const a = Math.abs(d);
+      c.style.setProperty("--x", (d * step - Math.sign(d) * Math.max(0, a - 1) * step * .28).toFixed(1) + "px");
+      c.style.setProperty("--s", (1 - Math.min(a, 3) * .13).toFixed(3));
+      c.style.setProperty("--z", Math.round(40 - a * 10));
+      c.style.setProperty("--o", Math.max(0, Math.min(1, 2.6 - a)).toFixed(2));
+      c.style.setProperty("--sat", (1 - Math.min(a, 1) * .12).toFixed(2));
+      c.style.setProperty("--br", (1 - Math.min(a, 1) * .04).toFixed(3));
+    });
+    const cur = Math.round(pos) % n;
+    if (cur !== lastDot) { dots.forEach((d, i) => d.classList.toggle("on", i === cur)); lastDot = cur; }
+  }
+  function tick(t){
+    if (last !== null) pos = (pos + Math.min(t - last, 100) / 1000 * SPEED) % n;
+    last = t; layout(); requestAnimationFrame(tick);
+  }
+  addEventListener("resize", () => { measure(); layout(); });
+  measure(); layout();
+  if (!reduce) requestAnimationFrame(tick);
+})();
+
+/* Flash del obturador */
+const flash = document.getElementById("flash");
+function doFlash(){ if(reduce) return; flash.classList.remove("go"); void flash.offsetWidth; flash.classList.add("go"); }
+
+/* Manifiesto: palabras que se encienden con el scroll */
+const rv = document.getElementById("reveal");
+[...rv.childNodes].forEach(n => {
+  if (n.nodeType === 3) {
+    const frag = document.createDocumentFragment();
+    n.textContent.split(/(\s+)/).forEach(t => {
+      if (!t.trim()) { frag.append(t); return; }
+      const s = document.createElement("span"); s.className = "w"; s.textContent = t;
+      if (/^(fecha\.|demás\.)$/i.test(t)) s.classList.add("hl");
+      frag.append(s);
+    });
+    n.replaceWith(frag);
+  }
+});
+const words = [...rv.querySelectorAll(".w")];
+function lightWords(){
+  const r = rv.getBoundingClientRect(), vh = innerHeight;
+  const p = Math.min(1, Math.max(0, (vh * .85 - r.top) / (r.height + vh * .35)));
+  const n = reduce ? words.length : Math.round(p * words.length);
+  words.forEach((w, i) => w.classList.toggle("lit", i < n));
+}
+
+/* Abanico de fotos ligado al scroll */
+const fan = document.getElementById("fan");
+const prints = [...fan.querySelectorAll(".print")];
+function fanOut(){
+  const r = fan.getBoundingClientRect(), vh = innerHeight;
+  let p = (vh - r.top) / (vh * .9);
+  p = reduce ? 1 : Math.min(1, Math.max(.35, p));
+  const scale = Math.min(1, innerWidth / 1240);
+  prints.forEach(el => { el.style.setProperty("--p", (p * scale).toFixed(3)); });
+}
+let ticking = false;
+addEventListener("scroll", () => { if (!ticking) { requestAnimationFrame(() => { lightWords(); fanOut(); ticking = false; }); ticking = true; } }, { passive: true });
+addEventListener("resize", () => { lightWords(); fanOut(); });
+lightWords(); fanOut();
+
+/* Selector de cabinas */
+const BOOTHS = {
+  c360:    { name:"Cabina 360°",    img:"img/cabina360.webp", word:"360°",    play:"Hazla girar",
+             lead:"Genera videos 360°, ideales para subir a historias o reels." },
+  clasica: { name:"Cabina Clásica", img:"img/clasica.webp",   word:"Clásica", play:"Imprimir tira",
+             lead:"Estructura personalizada al evento. Incluye impresión de fotos." },
+  ring:    { name:"Ring Booth",     img:"img/ring.webp",      word:"Ring",    play:"Encender aro",
+             lead:"Compacta y elegante. Incluye impresión de fotos." },
+  balloon: { name:"Balloon Box",    img:"img/balloon.webp",   word:"Party",   play:"Mover globos",
+             lead:"Ideal para fiestas y celebraciones. Incluye impresión de fotos." },
+  vip:     { name:"Fotógrafo VIP",  img:"img/vip.webp",       word:"VIP",     play:"Tomar foto",
+             lead:"Una estación con fotógrafo e iluminación profesional para que tus invitados posen." }
+};
+const ORDER = ["c360","clasica","ring","balloon","vip"];
+const sec = document.getElementById("cabinas"), bview = document.getElementById("bview"), bimg = document.getElementById("bimg");
+let cur = "c360";
+function setBooth(k){
+  cur = k; const b = BOOTHS[k], next = ORDER[(ORDER.indexOf(k)+1)%ORDER.length];
+  sec.dataset.mood = k;
+  document.querySelectorAll(".tabs button").forEach(t => t.setAttribute("aria-selected", t.dataset.k === k));
+  bview.classList.remove("on"); bview.className = "bview k-" + k;
+  bimg.classList.add("swap");
+  setTimeout(() => { bimg.src = b.img; bimg.alt = b.name; bimg.classList.remove("swap"); }, reduce ? 0 : 220);
+  document.getElementById("bname").textContent = b.name;
+  document.getElementById("blead").textContent = b.lead;
+  document.getElementById("bplaytxt").textContent = b.play;
+  document.getElementById("bgword").textContent = b.word;
+  document.getElementById("nimg").src = BOOTHS[next].img;
+  document.getElementById("nname").textContent = BOOTHS[next].name;
+  const cta = document.getElementById("bcta");
+  cta.href = waLink("Hola GM Eventos, me interesa: " + b.name + ". ¿Tienen disponibilidad para mi fecha?");
+  cta.target = "_blank"; cta.rel = "noopener";
+}
+document.querySelectorAll(".tabs button").forEach(t => t.addEventListener("click", () => setBooth(t.dataset.k)));
+document.getElementById("bnext").addEventListener("click", () => setBooth(ORDER[(ORDER.indexOf(cur)+1)%ORDER.length]));
+document.getElementById("bplay").addEventListener("click", () => {
+  const on = !bview.classList.contains("on");
+  if (on && cur === "ring") placeRing();
+  bview.classList.toggle("on", on);
+  if (on && (cur === "clasica" || cur === "vip")) doFlash();
+});
+/* aro de luz: posicionado sobre el aro del render */
+function placeRing(){
+  const fx = document.getElementById("fxring"), r = bimg.getBoundingClientRect(), v = bview.getBoundingClientRect();
+  const nw = bimg.naturalWidth || 1, nh = bimg.naturalHeight || 1, s = Math.min(r.width / nw, r.height / nh);
+  const cw = nw * s, ch = nh * s, cl = r.left + (r.width - cw) / 2, ct = r.top + (r.height - ch);
+  const d = cw * .42;
+  fx.style.width = fx.style.height = d + "px";
+  fx.style.left = (cl - v.left + cw * .246 - d/2) + "px";
+  fx.style.top = (ct - v.top + ch * .166 - d/2) + "px";
+}
+bimg.addEventListener("load", placeRing); addEventListener("resize", placeRing);
+
+setBooth("c360");
+
+/* Configurador de brandeo */
+const nameIn = document.getElementById("bname-in"), pl = document.getElementById("pl"), pr = document.getElementById("pr"), mock = document.getElementById("mock");
+let logoURL = null;
+function paintBrand(){
+  const t = nameIn.value.trim() || "Tu marca";
+  if (logoURL) {
+    pl.innerHTML = '<img src="' + logoURL + '" alt="Logo">';
+    pr.innerHTML = '<img src="' + logoURL + '" alt="Logo">';
+  } else {
+    pl.innerHTML = ""; pr.innerHTML = "";
+    const a = document.createElement("span"); a.textContent = t; pl.append(a);
+    const b = document.createElement("span"); b.textContent = t; pr.append(b);
+  }
+  let total = 3900; const sel = [];
+  document.querySelectorAll("#extras input:checked").forEach(c => { total += +c.dataset.p; sel.push(c.dataset.n); });
+  document.getElementById("bsum").textContent = fmt(total);
+  const cta = document.getElementById("brand-cta");
+  cta.href = waLink("Hola GM Eventos, quiero una Cabina Clásica brandeada para " + t + (sel.length ? ", con: " + sel.join(", ") : "") + ". Total estimado " + fmt(total) + ".");
+  cta.target = "_blank"; cta.rel = "noopener";
+}
+nameIn.addEventListener("input", paintBrand);
+document.querySelectorAll("#sw button").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll("#sw button").forEach(x => x.setAttribute("aria-pressed", x === b));
+  mock.style.setProperty("--bcol", b.dataset.c);
+}));
+document.getElementById("logo-in").addEventListener("change", e => {
+  const f = e.target.files[0]; if (!f) return;
+  if (logoURL) URL.revokeObjectURL(logoURL);
+  logoURL = URL.createObjectURL(f);
+  document.getElementById("logo-txt").textContent = f.name + " · listo";
+  paintBrand();
+});
+document.querySelectorAll("#extras input").forEach(c => c.addEventListener("change", paintBrand));
+paintBrand();
+
+/* Cotizador rápido */
+const qd = document.getElementById("qdate");
+try { const d = new Date(); d.setDate(d.getDate()+30); qd.value = d.toISOString().slice(0,10); qd.min = new Date().toISOString().slice(0,10); } catch(e){}
+document.querySelectorAll(".opts").forEach(g => g.addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  if (g.hasAttribute("data-multi")) b.setAttribute("aria-pressed", b.getAttribute("aria-pressed") !== "true");
+  else g.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b));
+  buildQuote();
+}));
+qd.addEventListener("change", buildQuote);
+function buildQuote(){
+  const evBtn = document.querySelector('[data-g="evento"] [aria-pressed="true"]');
+  const evTxt = evBtn.hasAttribute("data-otro") ? "evento" : evBtn.textContent.toLowerCase();
+  const cabs = [...document.querySelectorAll('[data-g="cabina"] [aria-pressed="true"]')].map(b => b.textContent);
+  const cabName = cabs.length ? cabs.join(", ") : "Por definir";
+  let fecha = "por definir";
+  if (qd.value) { const [y,m,d] = qd.value.split("-").map(Number); fecha = new Date(y, m-1, d).toLocaleDateString("es-GT", { weekday:"long", day:"numeric", month:"long", year:"numeric" }); }
+  const msg = "¡Hola GM Eventos! 👋\nQuiero cotizar para mi " + evTxt + ".\n\n📸 " + cabName + "\n📅 Fecha: " + fecha + "\n\n¿Me pueden compartir precio y disponibilidad?";
+  document.getElementById("qmsg").textContent = msg;
+  document.getElementById("qsend").href = waLink(msg);
+}
+buildQuote();
+
+/* Nav: sección activa */
+const navLinks = [...document.querySelectorAll(".links a")];
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) navLinks.forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id));
+}), { rootMargin: "-45% 0px -50% 0px" });
+["nosotros","cabinas","testimonios","cotizar"].forEach(id => io.observe(document.getElementById(id)));
+</script>
+
+</body>
+</html>
